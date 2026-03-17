@@ -16,10 +16,3 @@ plt.xlabel("Time (seconds)")
 plt.ylabel("Signal dBm")
 plt.savefig("data/amma_signal.png")
 print("Plot saved!")
-```
-
-Commit it. Then on SSH:
-```
-cd ~/amma-project
-git pull
-python3.8 plot_signal.py
