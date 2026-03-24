@@ -1,4 +1,3 @@
-cat > ~/amma-project/detect_pain.py << 'EOF'
 import time
 import subprocess
 import os
@@ -52,4 +51,4 @@ while True:
             spikes = [] 
             
     time.sleep(1)
-EOF
+
