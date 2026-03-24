@@ -7,7 +7,7 @@ WINDOW = 60
 SPIKE_COUNT = 10
 
 def get_latest_signal():
-result = subprocess.run(['tail', '-1', '/home/rajmohan/amma-project/data/amma_data.txt'],
+    result = subprocess.run(['tail', '-1', '/home/rajmohan/amma-project/data/amma_data.txt'],
 capture_output=True, text=True)
 line = result.stdout.strip()
 if line:
