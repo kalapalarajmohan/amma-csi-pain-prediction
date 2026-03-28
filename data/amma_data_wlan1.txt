@@ -10,3 +10,240 @@
 23:46:38 -84
 23:46:39 -84
 23:46:40 -84
+Traceback (most recent call last):
+  File "/home/rajmohan/amma-project/signal_collect_wlan1.py", line 8, in <module>
+    r = subprocess.run(['iwconfig','wlan1'],capture_output=True,text=True)
+  File "/usr/lib/python3.8/subprocess.py", line 489, in run
+    with Popen(*popenargs, **kwargs) as process:
+  File "/usr/lib/python3.8/subprocess.py", line 854, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.8/subprocess.py", line 1702, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'iwconfig'
+Traceback (most recent call last):
+  File "/home/rajmohan/amma-project/signal_collect_wlan1.py", line 8, in <module>
+    r = subprocess.run(['iwconfig','wlan1'],capture_output=True,text=True)
+  File "/usr/lib/python3.8/subprocess.py", line 489, in run
+    with Popen(*popenargs, **kwargs) as process:
+  File "/usr/lib/python3.8/subprocess.py", line 854, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.8/subprocess.py", line 1702, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'iwconfig'
+Traceback (most recent call last):
+  File "/home/rajmohan/amma-project/signal_collect_wlan1.py", line 8, in <module>
+    r = subprocess.run(['iwconfig','wlan1'],capture_output=True,text=True)
+  File "/usr/lib/python3.8/subprocess.py", line 489, in run
+    with Popen(*popenargs, **kwargs) as process:
+  File "/usr/lib/python3.8/subprocess.py", line 854, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.8/subprocess.py", line 1702, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'iwconfig'
+Traceback (most recent call last):
+  File "/home/rajmohan/amma-project/signal_collect_wlan1.py", line 8, in <module>
+    r = subprocess.run(['iwconfig','wlan1'],capture_output=True,text=True)
+  File "/usr/lib/python3.8/subprocess.py", line 489, in run
+    with Popen(*popenargs, **kwargs) as process:
+  File "/usr/lib/python3.8/subprocess.py", line 854, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.8/subprocess.py", line 1702, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'iwconfig'
+Traceback (most recent call last):
+  File "/home/rajmohan/amma-project/signal_collect_wlan1.py", line 8, in <module>
+    r = subprocess.run(['iwconfig','wlan1'],capture_output=True,text=True)
+  File "/usr/lib/python3.8/subprocess.py", line 489, in run
+    with Popen(*popenargs, **kwargs) as process:
+  File "/usr/lib/python3.8/subprocess.py", line 854, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.8/subprocess.py", line 1702, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'iwconfig'
+Traceback (most recent call last):
+  File "/home/rajmohan/amma-project/signal_collect_wlan1.py", line 8, in <module>
+    r = subprocess.run(['iwconfig','wlan1'],capture_output=True,text=True)
+  File "/usr/lib/python3.8/subprocess.py", line 489, in run
+    with Popen(*popenargs, **kwargs) as process:
+  File "/usr/lib/python3.8/subprocess.py", line 854, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.8/subprocess.py", line 1702, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'iwconfig'
+Traceback (most recent call last):
+  File "/home/rajmohan/amma-project/signal_collect_wlan1.py", line 8, in <module>
+    r = subprocess.run(['iwconfig','wlan1'],capture_output=True,text=True)
+  File "/usr/lib/python3.8/subprocess.py", line 489, in run
+    with Popen(*popenargs, **kwargs) as process:
+  File "/usr/lib/python3.8/subprocess.py", line 854, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.8/subprocess.py", line 1702, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'iwconfig'
+Traceback (most recent call last):
+  File "/home/rajmohan/amma-project/signal_collect_wlan1.py", line 8, in <module>
+    r = subprocess.run(['iwconfig','wlan1'],capture_output=True,text=True)
+  File "/usr/lib/python3.8/subprocess.py", line 489, in run
+    with Popen(*popenargs, **kwargs) as process:
+  File "/usr/lib/python3.8/subprocess.py", line 854, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.8/subprocess.py", line 1702, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'iwconfig'
+Traceback (most recent call last):
+  File "/home/rajmohan/amma-project/signal_collect_wlan1.py", line 8, in <module>
+    r = subprocess.run(['iwconfig','wlan1'],capture_output=True,text=True)
+  File "/usr/lib/python3.8/subprocess.py", line 489, in run
+    with Popen(*popenargs, **kwargs) as process:
+  File "/usr/lib/python3.8/subprocess.py", line 854, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.8/subprocess.py", line 1702, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'iwconfig'
+Traceback (most recent call last):
+  File "/home/rajmohan/amma-project/signal_collect_wlan1.py", line 8, in <module>
+    r = subprocess.run(['iwconfig','wlan1'],capture_output=True,text=True)
+  File "/usr/lib/python3.8/subprocess.py", line 489, in run
+    with Popen(*popenargs, **kwargs) as process:
+  File "/usr/lib/python3.8/subprocess.py", line 854, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.8/subprocess.py", line 1702, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'iwconfig'
+Traceback (most recent call last):
+  File "/home/rajmohan/amma-project/signal_collect_wlan1.py", line 8, in <module>
+    r = subprocess.run(['iwconfig','wlan1'],capture_output=True,text=True)
+  File "/usr/lib/python3.8/subprocess.py", line 489, in run
+    with Popen(*popenargs, **kwargs) as process:
+  File "/usr/lib/python3.8/subprocess.py", line 854, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.8/subprocess.py", line 1702, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'iwconfig'
+00:00:08 -84
+00:00:09 -84
+python3.8: can't open file '/home/rajmohan/amma-project/signal_collect_wlan1.py': [Errno 2] No such file or directory
+python3.8: can't open file '/home/rajmohan/amma-project/signal_collect_wlan1.py': [Errno 2] No such file or directory
+python3.8: can't open file '/home/rajmohan/amma-project/signal_collect_wlan1.py': [Errno 2] No such file or directory
+00:26:14 -84
+00:26:15 -84
+00:26:16 -62
+00:26:17 0
+00:26:18 -86
+00:26:19 -86
+Traceback (most recent call last):
+  File "/home/rajmohan/amma-project/signal_collect_wlan1.py", line 9, in <module>
+    r = subprocess.run(['iwconfig','wlan1'],capture_output=True,text=True)
+  File "/usr/lib/python3.8/subprocess.py", line 489, in run
+    with Popen(*popenargs, **kwargs) as process:
+  File "/usr/lib/python3.8/subprocess.py", line 854, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.8/subprocess.py", line 1702, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'iwconfig'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/rajmohan/amma-project/signal_collect_wlan1.py", line 13, in <module>
+    r = subprocess.run(['iwconfig','wlan0'],capture_output=True,text=True)
+  File "/usr/lib/python3.8/subprocess.py", line 489, in run
+    with Popen(*popenargs, **kwargs) as process:
+  File "/usr/lib/python3.8/subprocess.py", line 854, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.8/subprocess.py", line 1702, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'iwconfig'
+00:28:01 -58
+00:28:02 -84
+00:28:03 -84
+00:28:04 -84
+00:28:05 -84
+00:28:06 -86
+00:28:07 -84
+00:28:08 -86
+00:28:09 -84
+00:28:10 -84
+00:28:11 -84
+00:28:12 -84
+00:28:13 -84
+00:28:14 -84
+00:28:15 -86
+00:28:16 -84
+00:28:17 -84
+00:28:18 -84
+00:28:19 -84
+00:28:20 -84
+00:28:21 -84
+00:28:22 -84
+00:28:23 -86
+00:28:24 -84
+00:28:25 -86
+00:28:26 -84
+00:28:27 -84
+00:28:28 -84
+00:28:29 -84
+00:28:30 -84
+00:28:31 -84
+00:28:32 -84
+00:28:33 -84
+00:28:34 -84
+00:28:35 -84
+00:28:36 -84
+00:28:37 -84
+00:28:39 -57
+00:28:40 -86
+00:28:41 -84
+00:28:42 -60
+00:28:43 -86
+00:28:44 -86
+00:28:45 -84
+00:28:46 -59
+00:28:47 -84
+00:28:48 -62
+00:28:49 -59
+00:28:50 -86
+00:28:51 -84
+00:28:52 -84
+00:28:53 -84
+00:28:54 -86
+00:28:55 -57
+00:28:56 -86
+00:28:57 -86
+00:28:58 -86
+00:28:59 -84
+00:29:00 -86
+00:29:01 -86
+00:29:02 -84
+00:29:03 -63
+00:29:04 -84
+00:29:05 -84
+00:29:06 -86
+00:29:07 -86
+00:29:08 -84
+00:29:09 -86
+00:29:10 -86
+00:29:11 -86
+00:29:12 -84
+00:29:13 -84
+00:29:14 -84
+00:29:15 -84
+00:29:16 -84
+00:29:17 -84
+00:29:18 -84
+00:29:19 -84
+00:29:20 -86
+00:29:21 -84
+00:29:22 -84
+00:29:23 -84
+00:29:24 -84
+00:29:26 -86
+00:29:27 -84
+00:29:28 -84
+00:29:29 -86
+00:29:30 -86
+00:29:31 -59
+00:29:32 -58
+00:29:33 -84
+00:29:34 -84
+00:29:35 -58
