@@ -2,17 +2,9 @@ import subprocess
 import time
 import datetime
 import os
-import signal as sig_handler
-
-def cleanup(signum, frame):
-    os.remove(LOCK)
-    exit()
-
-sig_handler.signal(sig_handler.SIGTERM, cleanup)
-sig_handler.signal(sig_handler.SIGINT, cleanup)
 
 LOCK = "/tmp/sentry.lock"
-if os.path.exists(LOCK):
+if os.path.exits(LOCK):
     print("Already running. Exit.")
     exit()
 open(LOCK, 'w').close()
@@ -20,17 +12,13 @@ open(LOCK, 'w').close()
 DATA = "/home/rajmohan/amma-project/data/amma_data.txt"
 ALERTS = "/home/rajmohan/amma-project/data/alerts.txt"
 
-BASELINE = -92
-THRESHOLD = 20
-SPIKE_COUNT =5 
-WINDOW = 60
+BASELINE = -87
+THRESHOLD = 5
 SPIKES = []
 
 def read_signal():
     try:
         r = subprocess.run(['tail','-n','1',DATA],capture_output=True,text=True)
-        if not r.stdout.strip():
-            return None
         return int(r.stdout.strip().split()[-1])
     except:
         return None
@@ -51,3 +39,10 @@ while True:
                 f.write(t+ 'ALERT sig=' + str(sig) + '\n')
             SPIKES.clear()
     time.sleep(1)
+import signal as sig_handler
+
+    os.remove(LOCK)
+    exit()
+
+sig_handler.signal(sig_handler.SIGTERM, cleanup)
+sig_handler.signal(sig_handler.SIGINT, cleanup)
