@@ -4,6 +4,8 @@ import datetime
 import os
 import signal as sig_handler
 
+from test_plug import get_token, control_plug
+
 def cleanup(signum, frame):
     os.remove(LOCK)
     exit()
@@ -20,7 +22,7 @@ open(LOCK, 'w').close()
 DATA = "/home/rajmohan/amma-project/data/amma_data.txt"
 ALERTS = "/home/rajmohan/amma-project/data/alerts.txt"
 
-BASELINE = -92
+BASELINE = -59
 THRESHOLD = 20
 SPIKE_COUNT =5 
 WINDOW = 60
@@ -49,5 +51,7 @@ while True:
             t = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             with open(ALERTS,'a') as f:
                 f.write(t+ 'ALERT sig=' + str(sig) + '\n')
+                token = get_token()
+                control_plug(token, True)
             SPIKES.clear()
     time.sleep(1)
