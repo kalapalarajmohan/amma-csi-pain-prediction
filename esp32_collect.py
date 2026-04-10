@@ -7,7 +7,7 @@ sock.bind(('',4210))
 while True:
     data, addr = sock.recvfrom(1024)
     sig = str(data)
-    t = datetime.datetime.now().strftime('%H:%M:%S')
+    t = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     with open(DATA, 'a') as f:
         f.write(t + ' ' + sig + '\n')
     print(t + ' ' + sig)
