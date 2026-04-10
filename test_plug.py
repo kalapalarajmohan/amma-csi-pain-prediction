@@ -28,5 +28,3 @@ def control_plug(token, turn_on=True):
     r = requests.post(BASE_URL + f"/v1.0/devices/{DEVICE_ID}/commands", headers=headers, data=body)
     print(r.json())
 
-token = get_token()
-control_plug(token, True)
