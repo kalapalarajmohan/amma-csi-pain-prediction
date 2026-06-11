@@ -26,7 +26,7 @@ Commands:
   python3.8 amma_monitor.py --report         -- doctor report
 
 Phone alerts:
-  Install ntfy app, subscribe to: amma_sciatica_alert_rajmohan
+  Install ntfy app, subscribe to: topic-in-data-folder
 """
 
 import os, sys, time, json, socket, struct, threading, logging, argparse, pickle
@@ -292,7 +292,7 @@ def send_alert(message, risk):
     try:
         import urllib.request
         req = urllib.request.Request(
-            "https://ntfy.sh/amma_sciatica_alert_rajmohan",
+            "https://ntfy.sh/" + open("/home/rajmohan/csi_sciatica/data/ntfy_topic.txt").read().strip(),
             data=message.encode(), method='POST')
         req.add_header('Title', f'Sciatica Alert - Risk {risk}/100')
         req.add_header('Priority', 'high' if risk>=80 else 'default')
@@ -325,7 +325,7 @@ def run_monitor():
     log.info("  AMMA SCIATICA MONITOR")
     log.info(f"  {datetime.now().strftime('%Y-%m-%d %H:%M')}")
     log.info("  Kernel SVM + Symbolic AI")
-    log.info("  ntfy: amma_sciatica_alert_rajmohan")
+    log.info("  ntfy: topic-in-data-folder")
     log.info("  Pain: python3.8 amma_monitor.py --pain 8")
     log.info("="*55)
 

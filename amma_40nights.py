@@ -471,7 +471,7 @@ def send_alert(message, risk):
     try:
         import urllib.request
         req = urllib.request.Request(
-            "https://ntfy.sh/amma_sciatica_alert_rajmohan",
+            "https://ntfy.sh/" + open("/home/rajmohan/csi_sciatica/data/ntfy_topic.txt").read().strip(),
             data=message.encode('utf-8'), method='POST')
         req.add_header('Title', f'Amma Alert - Risk {risk}%')
         req.add_header('Priority', 'high' if risk>=80 else 'default')
