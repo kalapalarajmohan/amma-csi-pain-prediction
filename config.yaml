@@ -1,0 +1,45 @@
+network:
+  jetson_ip: "192.168.29.232"
+  esp32_udp_port: 5005
+  apple_health_port: 5050
+  buffer_size: 65535
+
+esp32:
+  packet_rate_hz: 100
+  n_subcarriers: 52
+
+filters:
+  outlier_window: 50
+  outlier_sigma: 2.5
+  savgol_window: 11
+  savgol_poly: 3
+  lowpass_cutoff_hz: 5.0
+  lowpass_order: 4
+  baseline_packets: 200
+  pca_components: 10
+
+physio:
+  breathing_low_hz: 0.1
+  breathing_high_hz: 0.5
+  hrv_low_hz: 0.5
+  hrv_high_hz: 2.0
+
+phase1:
+  min_groundtruth_samples: 5
+  correlation_threshold: 0.75
+  max_retune_attempts: 3
+
+phase2:
+  session_window_minutes: 30
+  overlap_minutes: 5
+
+paths:
+  project_root: "/home/rajmohan/csi_sciatica"
+  raw_data: "/home/rajmohan/csi_sciatica/data/raw"
+  clean_data: "/home/rajmohan/csi_sciatica/data/clean"
+  patterns: "/home/rajmohan/csi_sciatica/data/patterns"
+  groundtruth: "/home/rajmohan/csi_sciatica/data/groundtruth"
+  logs: "/home/rajmohan/csi_sciatica/logs"
+
+logging:
+  level: "INFO"
