@@ -29,9 +29,10 @@ Gross repositioning produces amplitude changes clearly visible above ambient noi
 
 ## Status
 
-- 4 of 40 target nights collected as of writing; data collection is the current bottleneck, not modeling.
+- 8 of 40 target nights collected as of writing; data collection is the current bottleneck, not modeling.
 - Two live dashboards: a raw subcarrier heatmap and a plain-language status view (CALM / MOVEMENT / SOME ACTIVITY) for non-technical use.
-- Exploring a surface EMG reference system (erector spinae, 3cm lateral to midline at L3) as ground truth to validate whatever the WiFi system claims to detect, grounded in prior work on protective muscle reflexes and anticipatory postural adjustments in chronic low-back pain.
+- Not pursuing invasive ground-truth sensing (e.g. surface EMG) at this time — my mother's comfort takes priority over data collection, and I'd rather report an honest limitation than push past what's appropriate for the person this project is meant to help.
+- Independently validated the breathing-rate extraction against real recorded data: a second, separately-written implementation of the rate-detection logic agreed with the live pipeline's own output on 26 of 30 sampled windows within 5 bpm, run on the actual deployment hardware.
 
 ## Why this repo is public in this state
 
