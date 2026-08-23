@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amma CSI — Contactless Sensing Field Notes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Source+Sans+3:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #12161d;
+    --panel: #1a2029;
+    --panel-line: #2a3240;
+    --ink: #ece7dc;
+    --ink-dim: #8d97a6;
+    --amber: #e8a33d;
+    --amber-dim: #7a5b26;
+    --teal: #5fb3b3;
+    --teal-dim: #2f5a5a;
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Source Sans 3', -apple-system, sans-serif;
+    --mono: 'IBM Plex Mono', 'Courier New', monospace;
+  }
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family: var(--sans); line-height:1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a{ color:var(--amber); }
+  ::selection{ background:var(--amber-dim); color:var(--ink); }
+  .wrap{ max-width: 880px; margin:0 auto; padding: 0 28px; }
+  nav{
+    position: sticky; top:0; z-index:50;
+    background: rgba(18,22,29,0.86); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--panel-line);
+  }
+  nav .wrap{ display:flex; align-items:center; justify-content:space-between; padding:14px 28px; }
+  .brand{ font-family: var(--mono); font-size:13px; letter-spacing:.04em; color:var(--ink-dim); }
+  .brand b{ color:var(--amber); font-weight:600; }
+  nav .links{ display:flex; gap:22px; font-family: var(--mono); font-size:12.5px; }
+  nav .links a{ color:var(--ink-dim); text-decoration:none; }
+  nav .links a:hover{ color:var(--amber); }
+  header.hero{ position:relative; overflow:hidden; padding: 96px 0 64px; }
+  .scope{ position:absolute; inset:0; opacity:.35; pointer-events:none; }
+  .hero .wrap{ position:relative; z-index:2; }
+  .eyebrow{
+    font-family: var(--mono); font-size:12.5px; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--teal); margin-bottom:18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{
+    content:''; width:7px; height:7px; border-radius:50%; background:var(--teal);
+    box-shadow:0 0 8px var(--teal); animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse{ 0%,100%{ opacity:1 } 50%{ opacity:.35 } }
+  h1.title{
+    font-family: var(--serif); font-weight:500; font-size: clamp(2.1rem, 5vw, 3.3rem);
+    line-height:1.12; margin: 0 0 22px; color:var(--ink); max-width: 15ch;
+  }
+  h1.title em{ font-style: italic; color:var(--amber); }
+  .lede{ font-size:1.08rem; color:var(--ink-dim); max-width:56ch; margin:0 0 34px; }
+  .hero-cta{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{
+    font-family: var(--mono); font-size:13px; letter-spacing:.02em;
+    padding:11px 20px; border-radius:3px; text-decoration:none;
+    border:1px solid var(--panel-line); transition: all .15s ease;
+  }
+  .btn.primary{ background:var(--amber); color:#1a1206; border-color:var(--amber); font-weight:600; }
+  .btn.primary:hover{ background:#f3b458; }
+  .btn.ghost{ color:var(--ink-dim); }
+  .btn.ghost:hover{ color:var(--ink); border-color:var(--ink-dim); }
+  section{ padding: 64px 0; border-top:1px solid var(--panel-line); }
+  .kicker{
+    font-family:var(--mono); font-size:11.5px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--ink-dim); margin-bottom:14px;
+  }
+  h2{
+    font-family: var(--serif); font-weight:500; font-size: clamp(1.5rem,3vw,2rem);
+    margin: 0 0 22px; color:var(--ink);
+  }
+  p{ color:var(--ink-dim); margin: 0 0 16px; max-width:66ch; }
+  p strong{ color:var(--ink); font-weight:600; }
+  .split{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--panel-line);
+          border:1px solid var(--panel-line); border-radius:6px; overflow:hidden; margin-top:8px; }
+  .split .col{ background:var(--panel); padding:26px 24px; }
+  .split .col h3{
+    font-family:var(--mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase;
+    margin:0 0 12px;
+  }
+  .split .col.is h3{ color:var(--teal); }
+  .split .col.not h3{ color:var(--amber); }
+  .split .col p{ margin:0; font-size:.95rem; color:var(--ink-dim); }
+  @media(max-width:640px){ .split{ grid-template-columns:1fr; } }
+  .log{ margin-top: 8px; }
+  .log-entry{ display:grid; grid-template-columns: 84px 1fr; gap:20px; padding: 18px 0;
+              border-bottom:1px solid var(--panel-line); }
+  .log-entry:last-child{ border-bottom:none; }
+  .log-date{ font-family:var(--mono); font-size:12px; color:var(--ink-dim); padding-top:2px; }
+  .log-body h4{ margin:0 0 6px; font-size:1rem; font-weight:600; color:var(--ink); }
+  .log-body p{ margin:0; font-size:.94rem; }
+  .tag{ display:inline-block; font-family:var(--mono); font-size:10.5px; letter-spacing:.06em;
+        text-transform:uppercase; padding:2px 8px; border-radius:3px; margin-left:10px;
+        vertical-align:middle; }
+  .tag.fail{ background:rgba(232,90,61,.14); color:#e88a5d; }
+  .tag.fix{ background:rgba(95,179,179,.14); color:var(--teal); }
+  .tag.result{ background:rgba(232,163,61,.16); color:var(--amber); }
+  .telemetry{
+    background: var(--panel); border:1px solid var(--panel-line); border-radius:8px;
+    padding: 8px; margin-top: 10px;
+  }
+  .telemetry-head{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 16px 14px; border-bottom:1px solid var(--panel-line);
+  }
+  .telemetry-head span{ font-family:var(--mono); font-size:11px; color:var(--ink-dim); letter-spacing:.08em; }
+  .dots{ display:flex; gap:6px; }
+  .dots i{ width:7px; height:7px; border-radius:50%; background:var(--panel-line); display:block; }
+  .dots i:nth-child(1){ background:#e8735d; }
+  .dots i:nth-child(2){ background:#e8a33d; }
+  .dots i:nth-child(3){ background:#5fb37f; }
+  .readout-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:1px; background:var(--panel-line); }
+  .readout{ background:var(--panel); padding:22px 18px; }
+  .readout .num{ font-family: var(--mono); font-size: 1.9rem; font-weight:600; color:var(--amber); line-height:1; }
+  .readout .num small{ font-size:1rem; color:var(--ink-dim); font-weight:400; }
+  .readout .label{ font-family:var(--mono); font-size:11px; color:var(--ink-dim); margin-top:8px; letter-spacing:.03em; }
+  @media(max-width:640px){ .readout-grid{ grid-template-columns:1fr 1fr; } }
+  .callout{
+    border-left:3px solid var(--amber); background: rgba(232,163,61,0.06);
+    padding: 20px 24px; border-radius: 0 6px 6px 0; margin-top:10px;
+  }
+  .callout p{ margin:0; color:var(--ink); font-size:.98rem; }
+  .callout p + p{ margin-top:10px; }
+  footer{ padding: 56px 0 80px; border-top:1px solid var(--panel-line); }
+  footer .row{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px; }
+  footer h3{ font-family:var(--serif); font-size:1.3rem; font-weight:500; margin:0 0 8px; }
+  footer p{ margin:0; max-width:44ch; }
+  footer .links2{ display:flex; gap:22px; font-family:var(--mono); font-size:12.5px; }
+  footer .links2 a{ text-decoration:none; color:var(--ink-dim); }
+  footer .links2 a:hover{ color:var(--amber); }
+  .signoff{ margin-top:40px; font-family:var(--serif); font-style:italic; color:var(--ink-dim); font-size:.98rem; }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+    html{ scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <div class="brand"><b>amma-csi</b> / field notes</div>
+    <div class="links">
+      <a href="#log">Log</a>
+      <a href="#readout">Readout</a>
+      <a href="#open">Open problem</a>
+      <a href="https://github.com/kalapalarajmohan/amma-csi-pain-prediction" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</nav>
+<header class="hero">
+  <svg class="scope" viewBox="0 0 900 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="fade" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#e8a33d" stop-opacity="0"/>
+        <stop offset="15%" stop-color="#e8a33d" stop-opacity="0.9"/>
+        <stop offset="85%" stop-color="#5fb3b3" stop-opacity="0.9"/>
+        <stop offset="100%" stop-color="#5fb3b3" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <path d="M0,160 C40,140 60,90 90,95 C120,100 130,180 160,175 C190,170 195,110 225,105 C255,100 265,190 295,185 C325,180 335,120 365,120 C395,120 400,150 430,150 C460,150 470,130 500,130 C530,130 535,175 565,175 C595,175 605,100 635,95 C665,90 675,165 705,160 C735,155 745,120 775,120 C805,120 815,145 845,145 C860,145 875,140 900,138"
+      fill="none" stroke="url(#fade)" stroke-width="1.6"/>
+  </svg>
+  <div class="wrap">
+    <div class="eyebrow">Live deployment · Nizamabad, Telangana</div>
+    <h1 class="title">Watching for pain without <em>watching</em> at all.</h1>
+    <p class="lede">A contactless motion-sensing system built from $30 of WiFi hardware — no camera, no wearable — to understand my mother's chronic sciatic pain. This is the honest version: what it does, what it doesn't yet, and every real failure along the way.</p>
+    <div class="hero-cta">
+      <a class="btn primary" href="https://github.com/kalapalarajmohan/amma-csi-pain-prediction" target="_blank" rel="noopener">View the repository →</a>
+      <a class="btn ghost" href="#log">Read the field log</a>
+    </div>
+  </div>
+</header>
+<section id="what">
+  <div class="wrap">
+    <div class="kicker">The honest split</div>
+    <h2>What this is — and what it isn't, yet.</h2>
+    <p>An ESP32 streams WiFi Channel State Information to a Jetson Nano, which runs a self-healing pipeline through the night. That part works. The part that started this project — catching muscle guarding before pain registers consciously — doesn't, yet.</p>
+    <div class="split">
+      <div class="col is">
+        <h3>Channel A — Working</h3>
+        <p>Gross body movement and repositioning, detected reliably through the night. Two live dashboards. A deployed, self-healing edge pipeline running on real hardware, not simulation.</p>
+      </div>
+      <div class="col not">
+        <h3>Channel B — Not yet</h3>
+        <p>Pre-onset micro-muscular guarding — the reflexive tensing that may precede conscious pain. Several orders of magnitude smaller than what this hardware currently resolves. The real open problem.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="log">
+  <div class="wrap">
+    <div class="kicker">Field log</div>
+    <h2>What actually happened, in order.</h2>
+    <div class="log">
+      <div class="log-entry">
+        <div class="log-date">v0</div>
+        <div class="log-body">
+          <h4>RSSI: giving shadows, not shapes <span class="tag fail">Dead end</span></h4>
+          <p>A single signal-strength number per second couldn't tell a person shifting in bed from someone walking through the next room. Abandoned.</p>
+        </div>
+      </div>
+      <div class="log-entry">
+        <div class="log-date">v1</div>
+        <div class="log-body">
+          <h4>Switch to CSI <span class="tag fix">Fix</span></h4>
+          <p>52 subcarriers of amplitude and phase per packet gave real spatial resolution. Gross movement became reliably detectable.</p>
+        </div>
+      </div>
+      <div class="log-entry">
+        <div class="log-date">—</div>
+        <div class="log-body">
+          <h4>Posture classifier collapses on real hardware <span class="tag fail">Finding</span></h4>
+          <p>86% in simulation, incoherent in deployment. Fixed room geometry made upright/slouched/lying nearly indistinguishable. Reported as-is, not hidden.</p>
+        </div>
+      </div>
+      <div class="log-entry">
+        <div class="log-date">—</div>
+        <div class="log-body">
+          <h4>Breathing rate was silently wrong <span class="tag fail">Bug</span></h4>
+          <p>A hardcoded 100Hz sample rate didn't match the real bursty ~26–34 pkt/s from the ESP32. Fixed by computing rate from real timestamps.</p>
+        </div>
+      </div>
+      <div class="log-entry">
+        <div class="log-date">tonight</div>
+        <div class="log-body">
+          <h4>Independent validation, on real data <span class="tag result">Result</span></h4>
+          <p>A second, separately-written implementation of the breathing-rate logic was run against real recorded packets on the actual deployment hardware — and agreed with the live pipeline.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="readout">
+  <div class="wrap">
+    <div class="kicker">Current readout</div>
+    <h2>Where things actually stand.</h2>
+    <div class="telemetry">
+      <div class="telemetry-head">
+        <span>NIGHT_PIPELINE.STATUS</span>
+        <div class="dots"><i></i><i></i><i></i></div>
+      </div>
+      <div class="readout-grid">
+        <div class="readout">
+          <div class="num">8<small>/40</small></div>
+          <div class="label">Nights collected</div>
+        </div>
+        <div class="readout">
+          <div class="num">26<small>/30</small></div>
+          <div class="label">Windows validated within 5bpm</div>
+        </div>
+        <div class="readout">
+          <div class="num">$30</div>
+          <div class="label">Total hardware cost</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="open">
+  <div class="wrap">
+    <div class="kicker">The real problem</div>
+    <h2>The gap that's still open.</h2>
+    <p>Gross repositioning produces amplitude changes clearly visible above ambient noise. The micro-muscular guarding I actually set out to catch is, by rough estimate, several orders of magnitude smaller — likely below this system's current noise floor. That gap hasn't been formally measured yet. That's the next step, not a footnote.</p>
+    <div class="callout">
+      <p><strong>On ground truth:</strong> the obvious next move would be a surface EMG reference to validate what the WiFi system detects. I'm not doing that. My mother's comfort takes priority over data collection, and I'd rather report an honest limitation than push past what's appropriate for the person this project exists to help.</p>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <div>
+        <h3>Read the whole thing.</h3>
+        <p>Every finding above — good and bad — is documented in full in the repository, including the code, the dashboards, and the raw validation script.</p>
+      </div>
+      <div class="links2">
+        <a href="https://github.com/kalapalarajmohan/amma-csi-pain-prediction" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+    <div class="signoff">— Rajmohan Kalapala, for Amma.</div>
+  </div>
+</footer>
+</body>
+</html>
