@@ -18,7 +18,7 @@ Switching to **CSI** (52 subcarriers of amplitude and phase per packet from the 
 
 ## The core open problem
 
-There is roughly a **60 dB gap in signal-to-noise ratio** between gross repositioning (easy to detect with CSI) and the fine-grained muscular guarding I actually want to catch (currently below the noise floor of this setup). Closing that gap is the real research question — whether through better sensor placement, a different modality, or signal processing I haven't tried yet.
+Gross repositioning produces amplitude changes clearly visible above ambient noise in this setup. The fine-grained muscular guarding I actually want to catch is, by rough estimate, several orders of magnitude smaller — likely well below this system's current noise floor. I have not yet formally characterized that noise floor or measured this gap precisely; doing so is the next concrete step, along with exploring better sensor placement, a different modality, or additional signal processing.
 
 ## Honest findings and failure modes
 
