@@ -119,6 +119,11 @@ def _esp32_loop():
             amp  = np.abs(real + 1j*imag)
             with _ring_lock:
                 _ring.append((time.time(), amp))
+                try:
+                    with open("/home/rajmohan/csi_sciatica/data/live_amp.log", "a") as _lf:
+                        _lf.write(str(time.time()) + " " + ",".join(f"{v:.3f}" for v in amp) + chr(10))
+                except Exception:
+                    pass
             _connected = True; _rx_count += 1; last_rx = time.time()
         except socket.timeout:
             if _connected and (time.time()-last_rx) > 15:
@@ -129,10 +134,13 @@ def _esp32_loop():
 def get_window():
     with _ring_lock:
         if len(_ring) < WINDOW_PKTS: return None
-        return np.stack([r[1] for r in list(_ring)[-WINDOW_PKTS:]], axis=0)
+        recent = list(_ring)[-WINDOW_PKTS:]
+        times  = np.array([r[0] for r in recent])
+        amps   = np.stack([r[1] for r in recent], axis=0)
+        return amps, times
 
 # ── Signal extraction (6 signals) ────────────────────
-def extract_signals(amp):
+def extract_signals(amp, times=None):
     """Extract all 6 physiological signals from CSI amplitude window."""
     try:
         g      = safe(amp.mean(), 1.0)
@@ -144,13 +152,18 @@ def extract_signals(amp):
         # Signal 2: Breathing rate
         breathing = None
         try:
-            nyq  = FS/2
-            b, a = butter(4, [0.15/nyq, 0.5/nyq], btype='band')
-            filt = filtfilt(b, a, energy)
-            pks, _ = find_peaks(filt, distance=int(FS*2))
-            if len(pks) >= 2:
-                rate = 60.0 / np.mean(np.diff(pks) / FS)
-                breathing = round(rate, 1) if 6 <= rate <= 30 else None
+            if times is not None and len(times) > 1:
+                fs_actual = (len(times) - 1) / (times[-1] - times[0])
+            else:
+                fs_actual = FS
+            if fs_actual >= 4:
+                nyq  = fs_actual/2
+                b, a = butter(4, [0.15/nyq, 0.5/nyq], btype='band')
+                filt = filtfilt(b, a, energy)
+                pks, _ = find_peaks(filt, distance=int(fs_actual*2))
+                if len(pks) >= 2:
+                    rate = 60.0 / np.mean(np.diff(pks) / fs_actual)
+                    breathing = round(rate, 1) if 6 <= rate <= 30 else None
         except: pass
 
         # Signal 3+4: Subcarrier asymmetry
@@ -602,13 +615,13 @@ def run_monitor():
         while True:
             time.sleep(INTERVAL)
 
-            amp = get_window()
-            if amp is None:
+            window = get_window()
+            if window is None:
                 log.warning("No signal window — waiting...")
                 continue
-
+            amp, win_times = window
             # Extract signals
-            feat = extract_signals(amp)
+            feat = extract_signals(amp, win_times)
 
             # Apple Watch
             apple = _apple[-1] if _apple else {}

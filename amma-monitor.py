@@ -125,7 +125,8 @@ def extract_features(amp):
     b, a    = butter(4, [0.15/nyq, 0.5/nyq], btype='band')
     br_power= float(np.var(filtfilt(b, a, energy)))
     lo_hi   = lo / (hi + 1e-8)
-    corr_mat = np.nan_to_num(np.corrcoef(amp.T), nan=0.0)
+    corr_mat = np.corrcoef(amp.T)
+    corr_mat[np.isnan(corr_mat)] = 0.0
     corr    = float(np.mean(corr_mat[np.triu_indices(N_SC, k=1)]))
     return np.array([g, lo, hi, mid, instab, movement, trend,
                      br_power, lo_hi, float(skew(energy)),
@@ -165,7 +166,7 @@ class KernelSVM:
         X = np.array(X); y = np.array(y)
         self.pipe = Pipeline([
             ('sc',  StandardScaler()),
-            ('svm', SVC(kernel='rbf', C=10, gamma='scale',
+            ('svm', SVC(kernel='rbf', C=10, gamma='auto',
                         probability=True, random_state=42))
         ])
         self.pipe.fit(X, y)
